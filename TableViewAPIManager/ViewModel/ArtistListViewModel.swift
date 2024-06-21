@@ -11,14 +11,15 @@ class ArtistListViewModel {
     weak var delegate: ArtistListDataProtocol?
     internal var audiobooks: [Audiobook] = []
 
-    func fetchData() {
-        APIManager.shared.fetchData(url: Constants.serverUrl.rawValue) { [weak self] (searchResult: AudiobookResponse?) in
+    func fetchData(_ searchTerm: String) {
+        let searchUrl = Constants.serverUrl.rawValue + searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        APIManager.shared.fetchData(url: searchUrl) { [weak self] (searchResult: AudiobookResponse?) in
             guard let searchResult = searchResult else {
                 print("\(ServerErrors.noDataOrExtractionFailed.rawValue)")
                 return
             }
             self?.audiobooks = searchResult.results
-            self?.delegate?.didFetchArtistData()
+            self?.delegate?.didFetchArtistData(searchBarText: searchTerm)
         }
     }
     

@@ -8,8 +8,9 @@
 import Foundation
 
 enum Constants: String {
-    case serverUrl = "https://itunes.apple.com/search?term=a"
+    case serverUrl = "https://itunes.apple.com/search?term="
 }
+
 
 enum ServerErrors: String {
     case invalidServerUrl = "Invalid server url"

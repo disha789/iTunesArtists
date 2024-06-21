@@ -10,6 +10,7 @@ import UIKit
 class ArtistViewController: UIViewController {
     
     // MARK: Properties
+    @IBOutlet weak var artistSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     private var viewModel = ArtistListViewModel()
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -20,8 +21,8 @@ class ArtistViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         viewModel.delegate = self
+        artistSearchBar.delegate = self
         navigationSetup()
-        viewModel.fetchData()
     }
     
     func navigationSetup(){
@@ -30,14 +31,36 @@ class ArtistViewController: UIViewController {
     }
 }
 
+extension ArtistViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.fetchData(searchText.isEmpty ? "" : searchText)
+    }
+}
+
 extension ArtistViewController: ArtistListDataProtocol {
-    func didFetchArtistData() {
+    func didFetchArtistData(searchBarText: String) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
         }
     }
 }
+
+// MARK: TableView DataSource
+extension ArtistViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.getAudioCount()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifier.artistCell.rawValue, for: indexPath) as! ArtistTableViewCell
+        let obj = viewModel.getAudioFor(row: indexPath.row)
+        cell.setUp(audioBook: obj)
+        return cell
+    }
+}
+
+
 
 
 // MARK: Fetching Audio Books
@@ -77,19 +100,3 @@ extension ArtistViewController: ArtistListDataProtocol {
 //        }
 //    }
 //}
-
-// MARK: TableView DataSource
-extension ArtistViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getAudioCount()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifier.artistCell.rawValue, for: indexPath) as! ArtistTableViewCell
-        let obj = viewModel.getAudioFor(row: indexPath.row)
-        
-        cell.setUp(audioBook: obj)
-        return cell
-    }
-}
-

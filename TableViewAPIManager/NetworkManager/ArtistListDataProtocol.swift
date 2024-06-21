@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ArtistListDataProtocol: AnyObject {
-    func didFetchArtistData()
+    func didFetchArtistData(searchBarText: String)
 }
