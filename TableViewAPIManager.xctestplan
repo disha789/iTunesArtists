@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "92FF6E88-40D8-45FE-A680-75F21877C67E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:iTunesArtist.xcodeproj",
+      "identifier" : "18A500292C19E3DB003CE38B",
+      "name" : "TableViewAPIManager"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:iTunesArtist.xcodeproj",
+        "identifier" : "18A5003F2C19E3DF003CE38B",
+        "name" : "TableViewAPIManagerTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:iTunesArtist.xcodeproj",
+        "identifier" : "18A500492C19E3E0003CE38B",
+        "name" : "TableViewAPIManagerUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

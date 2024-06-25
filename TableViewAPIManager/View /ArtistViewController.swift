@@ -12,14 +12,14 @@ class ArtistViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var artistSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = ArtistListViewModel()
+    var viewModel: ArtistListViewModel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     
     // MARK: ViewLifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        viewModel = ArtistListViewModel(apiManager: APIManager.shared)
         viewModel.delegate = self
         artistSearchBar.delegate = self
         navigationSetup()
@@ -54,49 +54,9 @@ extension ArtistViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifier.artistCell.rawValue, for: indexPath) as! ArtistTableViewCell
-        let obj = viewModel.getAudioFor(row: indexPath.row)
-        cell.setUp(audioBook: obj)
+        if let audioBook = viewModel.getAudioFor(row: indexPath.row) {
+            cell.setUp(audioBook: audioBook)
+        }
         return cell
     }
 }
-
-
-
-
-// MARK: Fetching Audio Books
-//extension ArtistViewController {
-//    private func fetchAudiobooks() {
-//        let successClosure: ((Data?) -> ())  = { data in
-//            guard let serverData = data else {
-//                return
-//            }
-//            self.processParsing(data: serverData)
-//        }
-//        
-//        // Fetching data from server
-//        activityIndicator.startAnimating()
-//        
-//        DispatchQueue.global(qos: .background).async {
-//            APIManager.sharedInstance.getAudioFromServer(url: Constants.serverUrl.rawValue, closure: successClosure)
-//        }
-//    }
-//    
-//    func processParsing(data: Data){
-//        
-//        do {
-//            let audioResponse = try JSONDecoder().decode(AudiobookResponse.self, from: data)
-//            self.audiobooks = audioResponse.results
-//            refreshTableView()
-//        } catch {
-//            print(ServerErrors.unableConversionObject.rawValue, "\(error)")
-//            activityIndicator.stopAnimating()
-//        }
-//    }
-//    
-//    func refreshTableView(){
-//        DispatchQueue.main.async {
-//            self.activityIndicator.stopAnimating()
-//            self.tableView.reloadData()
-//        }
-//    }
-//}

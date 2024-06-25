@@ -10,13 +10,14 @@ import UIKit
 class APIManager {
     static var shared = APIManager()
     
-    private init() {}
+    //private init() {}
     
-    public func fetchData<T: Decodable>(url: String, completion: @escaping (T?) -> ()) {
+    public func fetchData(from url: String, completion: @escaping ((AudiobookResponse?) -> ())) {
         guard let url = URL(string: url) else {
             completion(nil)
             return
         }
+        
         URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
             if let error = error {
                 print("\(ServerErrors.fetchingDataError.rawValue): \(error)")
@@ -27,35 +28,21 @@ class APIManager {
                 completion(nil)
                 return
             }
-
-            do {
-                let decodedData = try JSONDecoder().decode(T.self, from: data)
-                completion(decodedData)
-            } catch {
-                print("\(ServerErrors.unableConversionObject.rawValue): \(error)")
-                completion(nil)
-            }
+            completion(self.parseResponseFor(audiobookData: data))
         }.resume()
     }
+    
+    func parseResponseFor(audiobookData: Data) -> AudiobookResponse? {
+        let audioBookResponse: AudiobookResponse?
+        do {
+            audioBookResponse = try JSONDecoder().decode(AudiobookResponse.self, from: audiobookData)
+            return audioBookResponse
+        } catch {
+            print("\(ServerErrors.unableConversionObject.rawValue): \(error)")
+        }
+        
+        return nil
+    }
 }
-
-//    static let sharedInstance = APIManager()
-//
-//    func getAudioFromServer(url: String, closure: @escaping ((Data?) -> ()) ) {
-//
-//        guard let serverURL = URL(string: url) else {
-//            print(ServerErrors.invalidServerUrl.rawValue)
-//            closure(nil)
-//            return
-//        }
-//
-//        URLSession.shared.dataTask(with: URLRequest(url: serverURL) ) { data, response, error in
-//            if error != nil {
-//                print(ServerErrors.fetchingDataError.rawValue)
-//                closure(nil)
-//                return
-//            }
-//            closure(data)
-//        }.resume()
-//    }
+ 
 

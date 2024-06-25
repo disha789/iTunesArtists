@@ -60,15 +60,5 @@ class ArtistTableViewCell: UITableViewCell {
                     self.artistImageView?.image = UIImage(data: data)
                 }
             }.resume()
-        
-//        APIManager.shared.fetchData(url: audioBook.artworkUrl60 ?? "") { data in
-//            guard let receivedImageData = data else {
-//                print("Image error..")
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                self.artistImageView?.image = UIImage(data: receivedImageData)
-//            }
-//        }
     }
 }
