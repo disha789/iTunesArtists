@@ -19,7 +19,7 @@ class ArtistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        viewModel = ArtistListViewModel(apiManager: APIManager.shared)
+        viewModel = ArtistListViewModel(apiManager: MockAPIManager())
         viewModel.delegate = self
         artistSearchBar.delegate = self
         navigationSetup()

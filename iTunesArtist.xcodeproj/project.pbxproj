@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18015AC32C2A1E1F00267032 /* MockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18015AC22C2A1E1F00267032 /* MockAPIManager.swift */; };
+		18015ACA2C2B588E00267032 /* MockArtistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18015AC92C2B588E00267032 /* MockArtistListViewModel.swift */; };
+		18015ACC2C2B58D900267032 /* MockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18015ACB2C2B58D900267032 /* MockAPIManager.swift */; };
 		1853B2582C20BD7B007EE8C7 /* ArtistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853B2572C20BD7B007EE8C7 /* ArtistListViewModel.swift */; };
 		1853B25A2C20C7C5007EE8C7 /* ArtistListDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853B2592C20C7C5007EE8C7 /* ArtistListDataProtocol.swift */; };
 		18A5002E2C19E3DB003CE38B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5002D2C19E3DB003CE38B /* AppDelegate.swift */; };
@@ -24,7 +25,6 @@
 		18A500A52C1A2908003CE38B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A500A42C1A2908003CE38B /* APIManager.swift */; };
 		18A500AC2C1A2C99003CE38B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A500AB2C1A2C99003CE38B /* Constants.swift */; };
 		C04C2A312C1A46B700AD3586 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04C2A302C1A46B600AD3586 /* Extensions.swift */; };
-		C0F64F652C2A135400D0A491 /* MockArtistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F64F642C2A0DBE00D0A491 /* MockArtistListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18015AC22C2A1E1F00267032 /* MockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIManager.swift; sourceTree = "<group>"; };
+		18015AC92C2B588E00267032 /* MockArtistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockArtistListViewModel.swift; path = ../../../JsonAPITask/JsonAPITask/Mock/MockArtistListViewModel.swift; sourceTree = "<group>"; };
+		18015ACB2C2B58D900267032 /* MockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockAPIManager.swift; path = ../../../JsonAPITask/JsonAPITask/Mock/MockAPIManager.swift; sourceTree = "<group>"; };
 		1853B2572C20BD7B007EE8C7 /* ArtistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListViewModel.swift; sourceTree = "<group>"; };
 		1853B2592C20C7C5007EE8C7 /* ArtistListDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListDataProtocol.swift; sourceTree = "<group>"; };
 		18A5002A2C19E3DB003CE38B /* TableViewAPIManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAPIManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +68,6 @@
 		18A500AB2C1A2C99003CE38B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18D080342C2A1A9000970770 /* TableViewAPIManager.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TableViewAPIManager.xctestplan; sourceTree = "<group>"; };
 		C04C2A302C1A46B600AD3586 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		C0F64F642C2A0DBE00D0A491 /* MockArtistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockArtistListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,8 +206,8 @@
 		C0F64F632C2A0D9300D0A491 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				18015AC22C2A1E1F00267032 /* MockAPIManager.swift */,
-				C0F64F642C2A0DBE00D0A491 /* MockArtistListViewModel.swift */,
+				18015AC92C2B588E00267032 /* MockArtistListViewModel.swift */,
+				18015ACB2C2B58D900267032 /* MockAPIManager.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -343,9 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0F64F652C2A135400D0A491 /* MockArtistListViewModel.swift in Sources */,
+				18015ACA2C2B588E00267032 /* MockArtistListViewModel.swift in Sources */,
 				1853B25A2C20C7C5007EE8C7 /* ArtistListDataProtocol.swift in Sources */,
-				18015AC32C2A1E1F00267032 /* MockAPIManager.swift in Sources */,
+				18015ACC2C2B58D900267032 /* MockAPIManager.swift in Sources */,
 				1853B2582C20BD7B007EE8C7 /* ArtistListViewModel.swift in Sources */,
 				18A500A52C1A2908003CE38B /* APIManager.swift in Sources */,
 				18A500602C19E9A9003CE38B /* DataModel.swift in Sources */,
