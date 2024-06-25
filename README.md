@@ -4,7 +4,7 @@
 iTunesArtists is an iOS application built using Swift, designed to fetch and display audiobook information from iTunes Search API in a table view format.
 
 ## Demo
-https://github.com/disha789/iTunesArtists/assets/49581479/c070f16c-6501-4a2f-8a5e-bee6d3f4a9d7
+https://github.com/disha789/iTunesArtists/assets/49581479/6a74370b-9d3d-4e38-9c1c-2bd12540433a
 
 ## Features
 - Fetches data asynchronously using URLSession.
@@ -40,6 +40,3 @@ The application includes unit tests for the ViewModel to ensure the data handlin
 
 ## Contributions
 Contributions are welcome. Please fork the repository and submit a pull request.
-
-## License
-Specify the license under which the project is available. Common licenses include MIT or Apache 2.0.
